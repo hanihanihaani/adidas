@@ -15,4 +15,9 @@ const mapDispatchToProps = (dispatch) => ({
   actions:bindActionCreators(LoginActions,dispatch)
 })
 
-export default connect (mapStateToProps,mapDispatchToProps)(Login);
+const ConLogin = connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+
+export default ConLogin;
