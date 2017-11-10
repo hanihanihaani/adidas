@@ -7,7 +7,7 @@ const getUser = function() {
 }
 
 const removeUser = function() {
-  sessionStorage.removeUser('user');
+  sessionStorage.removeItem('user');
 }
 
 export {getUser,saveUser,removeUser};

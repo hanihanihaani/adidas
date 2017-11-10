@@ -12,7 +12,7 @@ const login = (state=defaultState,action) => {
     case LOGIN_SUBMIT_SUCCESS:
       return {isFetching:false,user:action.payload}
     case LOGIN_SUBMIT_ERROR:
-      return {isFetching:false,user:{},error:true,message:action.payload}
+      return {isFetching:false, user:{}, error:true, message:action.payload}
     default:
       return state;
   }

@@ -19,3 +19,8 @@
 .nav .search {
   float: right;
 }
+.nav .user-btn {
+  position: absolute;
+  top: 19px;
+  right: 40px;
+}

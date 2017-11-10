@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import "../css/Nav.css";
-import { Layout, Menu, Button } from 'antd';
+import { Layout, Menu, Button,Dropdown, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 const { Header } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -11,7 +11,21 @@ class Nav extends Component {
     username:PropTypes.string.isRequired,
     actions:PropTypes.object.isRequired
   }
+  handleLogout() {
+    this.props.actions.navLogout();
+    window.location.href="/";
+  }
   render () {
+    const menu = (
+      <Menu>
+        <Menu.Item>
+          <a target="_self" rel="noopener noreferrer" href="/user">用户中心</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a onClick={this.handleLogout.bind(this)}>退出</a>
+        </Menu.Item>
+      </Menu>
+    );
     return (
       <div className='nav'>
           <Layout>
@@ -62,11 +76,11 @@ class Nav extends Component {
               </Menu>
               {
                  this.props.username ?
-                <Link to="/user">
-                  <Button icon="user">
-                  <span>{this.state.username}</span>
+                 <Dropdown overlay={menu}>
+                  <Button icon="user" className="user-btn">
+                     {this.props.username}<Icon type="down" />
                   </Button>
-                </Link>
+                </Dropdown>
                 :
                 <div>
                   <Link to="/login">
