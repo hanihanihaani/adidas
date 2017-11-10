@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Nav from './components/Nav';
 import SignUp from './pages/SignUp';
 import ConLogin from './containers/ConLogin';
+import ConNav from './containers/ConNav';
 import User from './pages/User';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import 'whatwg-fetch';
@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-            <Nav />
+            <ConNav />
             <Switch>
                <Route exact path="/login" component={ConLogin}/>            
                <Route exact path="/signup" component={SignUp}/>            

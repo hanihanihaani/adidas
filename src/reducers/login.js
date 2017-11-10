@@ -1,4 +1,4 @@
-import { LOGIN_SUBMIT_START, LOGIN_SUBMIT_PROMISE } from '../actions/login';
+import { LOGIN_SUBMIT_START, LOGIN_SUBMIT_SUCCESS, LOGIN_SUBMIT_ERROR } from '../actions/login';
 
 const defaultState = {
   isFetching:false,
@@ -9,12 +9,10 @@ const login = (state=defaultState,action) => {
   switch (action.type) {
     case LOGIN_SUBMIT_START:
       return {isFetching:true,user:{}}
-    case LOGIN_SUBMIT_PROMISE:
-      if (!action.error && action.payload.OK) {
-        return {isFetching:true,user:action.payload.user}
-      } else {
-        return {isFetching:false,user:{},message:action.payload,error:true}
-      }
+    case LOGIN_SUBMIT_SUCCESS:
+      return {isFetching:false,user:action.payload}
+    case LOGIN_SUBMIT_ERROR:
+      return {isFetching:false,user:{},error:true,message:action.payload}
     default:
       return state;
   }

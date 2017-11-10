@@ -11,11 +11,10 @@ class NormalLoginForm extends React.Component {
     actions:PropTypes.object.isRequired,
     user:PropTypes.object.isRequired,
     error:PropTypes.bool,
-    message:PropTypes.object
+    message:PropTypes.string
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.username) {
-      saveUser(nextProps.user.username);
       this.props.history.push('/');
     }
   }
@@ -25,7 +24,7 @@ class NormalLoginForm extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        this.props.actions.loginPromise(values)
+        this.props.actions.loginThunk(values)
       }
     })
   }

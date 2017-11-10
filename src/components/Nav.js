@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import "../css/Nav.css";
-import { Layout, Menu, Button, Icon } from 'antd';
+import { Layout, Menu, Button } from 'antd';
 import { Link } from 'react-router-dom';
 const { Header } = Layout;
 const SubMenu = Menu.SubMenu;
 
 class Nav extends Component {
   static propTypes = {
-    username:PropTypes.string.isRequired
+    username:PropTypes.string.isRequired,
+    actions:PropTypes.object.isRequired
   }
   render () {
     return (
