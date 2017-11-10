@@ -4,6 +4,7 @@ import SignUp from './pages/SignUp';
 import ConLogin from './containers/ConLogin';
 import ConNav from './containers/ConNav';
 import User from './pages/User';
+import Home from './pages/Home';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import 'whatwg-fetch';
 
@@ -17,6 +18,7 @@ class App extends Component {
                <Route exact path="/login" component={ConLogin}/>            
                <Route exact path="/signup" component={SignUp}/>            
                <Route exact path="/user" component={User}/>            
+               <Route exact path="/home" component={Home}/>            
             </Switch>
         </div>
       </BrowserRouter>

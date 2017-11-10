@@ -15,7 +15,7 @@ class NormalLoginForm extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.username) {
-      this.props.history.push('/');
+      this.props.history.push('/home');
     }
   }
 
