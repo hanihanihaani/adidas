@@ -1,0 +1,22 @@
+.log {
+  max-width: 350px;
+  border-radius: 8px;
+  margin-left: 300px;
+  margin-top: 30px;
+}
+.log .login-form-forgot {
+  float: right;
+}
+.log .login-form-button {
+  width: 100%;
+}
+.log a {
+  float: left;
+}
+.log .remember {
+  float: left;
+}
+.log .ant-btn-primary {
+  background-color: blue;
+  border-color: blue;
+}
