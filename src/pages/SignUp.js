@@ -1,35 +1,18 @@
 import React from 'react';
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
+import { Form, Input, Select, Row, Col, Checkbox, Button } from 'antd';
 import "../css/signup.css";
+import PropTypes from 'prop-types';
 const FormItem = Form.Item;
 const Option = Select.Option;
-const AutoCompleteOption = AutoComplete.Option;
 
-const residences = [{
-  value: 'zhejiang',
-  label: 'Zhejiang',
-  children: [{
-    value: 'hangzhou',
-    label: 'Hangzhou',
-    children: [{
-      value: 'xihu',
-      label: 'West Lake',
-    }],
-  }],
-}, {
-  value: 'jiangsu',
-  label: 'Jiangsu',
-  children: [{
-    value: 'nanjing',
-    label: 'Nanjing',
-    children: [{
-      value: 'zhonghuamen',
-      label: 'Zhong Hua Men',
-    }],
-  }],
-}];
 
 class RegistrationForm extends React.Component {
+  static propTypes = {
+    signup:PropTypes.func.isRequired,
+    isFetching:PropTypes.bool.isRequired,
+    error:PropTypes.bool,
+  }
+  
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
@@ -39,21 +22,11 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        fetch ("http://localhost:3000/signup", {
-          credentials:'include',
-          method:'POST',
-          headers:{
-            "Content-Type":"application/json"
-          },
-          body:JSON.stringify(values)
-        }).then ((res) => {
-          return res.json();
-        }).then ((signup) => {
-          console.log("signup return ", signup);
-        })
+        this.props.signup(values);
       }
-    });
+   })     
   }
+
   handleConfirmBlur = (e) => {
     const value = e.target.value;
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
@@ -86,7 +59,6 @@ class RegistrationForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { autoCompleteResult } = this.state;
 
     const formItemLayout = {
       labelCol: {
@@ -119,16 +91,23 @@ class RegistrationForm extends React.Component {
       </Select>
     );
 
-    const websiteOptions = autoCompleteResult.map(website => (
-      <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
-    ));
-
     return (
       <div className="sign">
         <Form onSubmit={this.handleSubmit}>
+           <FormItem
+            {...formItemLayout}
+            label="用户名"
+            hasFeedback
+          >
+            {getFieldDecorator('username', {
+              rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+            })(
+              <Input />
+            )}
+          </FormItem>
           <FormItem
             {...formItemLayout}
-            label="E-mail"
+            label="电子邮箱"
             hasFeedback
           >
             {getFieldDecorator('email', {
@@ -143,7 +122,7 @@ class RegistrationForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="Password"
+            label="密码"
             hasFeedback
           >
             {getFieldDecorator('password', {
@@ -158,7 +137,7 @@ class RegistrationForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="Confirm Password"
+            label="确认密码"
             hasFeedback
           >
             {getFieldDecorator('confirm', {
@@ -173,36 +152,7 @@ class RegistrationForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label={(
-              <span>
-                Nickname&nbsp;
-                <Tooltip title="What do you want other to call you?">
-                  <Icon type="question-circle-o" />
-                </Tooltip>
-              </span>
-            )}
-            hasFeedback
-          >
-            {getFieldDecorator('username', {
-              rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
-            })(
-              <Input />
-            )}
-          </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="Habitual Residence"
-          >
-            {getFieldDecorator('residence', {
-              initialValue: ['zhejiang', 'hangzhou', 'xihu'],
-              rules: [{ type: 'array', required: true, message: 'Please select your habitual residence!' }],
-            })(
-              <Cascader options={residences} />
-            )}
-          </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="Phone Number"
+            label="手机号"
           >
             {getFieldDecorator('phone', {
               rules: [{ required: true, message: 'Please input your phone number!' }],
@@ -212,23 +162,7 @@ class RegistrationForm extends React.Component {
           </FormItem>
           <FormItem
             {...formItemLayout}
-            label="Website"
-          >
-            {getFieldDecorator('website', {
-              rules: [{ required: true, message: 'Please input website!' }],
-            })(
-              <AutoComplete
-                dataSource={websiteOptions}
-                onChange={this.handleWebsiteChange}
-                placeholder="website"
-              >
-                <Input />
-              </AutoComplete>
-            )}
-          </FormItem>
-          <FormItem
-            {...formItemLayout}
-            label="Captcha"
+            label="验证码"
             extra="We must make sure that your are a human."
           >
             <Row gutter={8}>
@@ -252,7 +186,8 @@ class RegistrationForm extends React.Component {
             )}
           </FormItem>
           <FormItem {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit">Register</Button>
+            <Button type="primary" htmlType="submit"
+            >注册</Button>
           </FormItem>
         </Form>
       </div>

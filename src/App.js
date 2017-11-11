@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import SignUp from './pages/SignUp';
+import ConSignup from './containers/ConSignup';
 import ConLogin from './containers/ConLogin';
 import ConNav from './containers/ConNav';
 import User from './pages/User';
@@ -16,9 +16,9 @@ class App extends Component {
             <ConNav />
             <Switch>
                <Route exact path="/login" component={ConLogin}/>            
-               <Route exact path="/signup" component={SignUp}/>            
+               <Route exact path="/signup" component={ConSignup}/>            
                <Route exact path="/user" component={User}/>            
-               <Route exact path="/home" component={Home}/>            
+               <Route exact path="/" component={Home}/>            
             </Switch>
         </div>
       </BrowserRouter>

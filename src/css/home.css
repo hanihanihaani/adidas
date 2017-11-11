@@ -4,14 +4,14 @@
   bottom: 40px;
   margin-left: -100px;
   height: 25px;
-  border-radius: 9px;
+  border-radius: 13px;
   border: 1px solid #ccc;
   background-color: rgba(0,0,0,0.5);
 }
 .carousel .ant-carousel .slick-dots li button{
-  height: 15px;
+  height: 8px;
   line-height: 25px;
-  margin-top: 5px;
+  margin-top: 8px;
   border-radius: 6px;
   width: 48px;
 }

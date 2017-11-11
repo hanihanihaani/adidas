@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import "../css/login.css";
 import PropTypes from 'prop-types';
-import { saveUser } from '../service/getUser';
+import {captcha} from '../service/api';
 const FormItem = Form.Item;
 
 class NormalLoginForm extends React.Component {
@@ -13,12 +13,19 @@ class NormalLoginForm extends React.Component {
     error:PropTypes.bool,
     message:PropTypes.string
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.user.username) {
-      this.props.history.push('/home');
-    }
+  state = {
+       capBase64:""
   }
-
+  getCaptcha() {
+    captcha().then((data) => {
+      this.setState({
+        captcha:data.captcha
+      })
+    })
+  }
+  componentDidMount() {
+    this.getCaptcha();
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -30,6 +37,10 @@ class NormalLoginForm extends React.Component {
   }
   render() {
     const { getFieldDecorator } = this.props.form;
+    const capImg = (<img style={{height:28,cursor:"pointer"}}
+      onClick={()=>this.getCap()}
+      src={"data: image/jpg; base64,"+ this.state.capBase64} 
+      alt="captcha"/>)
     return (
       <div className="log">
         <Form onSubmit={this.handleSubmit} className="login-form">
@@ -46,6 +57,17 @@ class NormalLoginForm extends React.Component {
               rules: [{ required: true, message: 'Please input your Password!' }],
             })(
               <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Password" />
+            )}
+          </FormItem>
+           <FormItem>
+            {getFieldDecorator('captcha', {
+              valuePropName:'checked',
+              initialValue:true,
+            })(
+              <Input 
+                 addonBefore={<label>验证码</label>}
+                 addonAfter={capImg}
+               placeholder="请输入验证码" />
             )}
           </FormItem>
           <FormItem>

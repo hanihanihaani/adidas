@@ -23,7 +23,7 @@ class Home extends Component {
             imgs.map((img,i) => {
               return (
                   <div key={i}>
-                    <img src={img.img} alt="photo"/>
+                    <img src={img.img} alt="图片"/>
                   </div>
                 )
             })

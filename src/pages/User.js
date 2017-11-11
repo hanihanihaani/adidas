@@ -5,11 +5,7 @@ import {Row,Col,Card,Button} from 'antd';
 
 
 class User extends Component {
-  state = {
-    user:{}
-  }
   render () {
-    const { user } = this.state;
     return (
      <div className="user">
          <Row>
@@ -17,8 +13,8 @@ class User extends Component {
               <h1>用户信息</h1>
                <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
                 <div className="custom-card">
-                  <h3>用户名：{user.username}</h3>
-                  <p>注册时间：{user.createAt}</p>
+                  <h3>用户名：</h3>
+                  <p>注册时间：</p>
                   <Link to="/user/setting">
                     <Button>设置中心</Button>
                   </Link>
