@@ -14,17 +14,7 @@ class NormalLoginForm extends React.Component {
     message:PropTypes.string
   }
   state = {
-       capBase64:""
-  }
-  getCaptcha() {
-    captcha().then((data) => {
-      this.setState({
-        captcha:data.captcha
-      })
-    })
-  }
-  componentDidMount() {
-    this.getCaptcha();
+      captcha:"",
   }
   handleSubmit = (e) => {
     e.preventDefault();
@@ -35,11 +25,22 @@ class NormalLoginForm extends React.Component {
       }
     })
   }
+  getCaptcha() {
+    captcha().then((data) => {
+    console.log("cap：",data);
+     this.setState({
+        captcha:data.captcha
+      })
+    })
+  }
+  componentDidMount() {
+    this.getCaptcha();
+  }
   render() {
     const { getFieldDecorator } = this.props.form;
     const capImg = (<img style={{height:28,cursor:"pointer"}}
-      onClick={()=>this.getCap()}
-      src={"data: image/jpg; base64,"+ this.state.capBase64} 
+      onClick={()=>this.getCaptcha()}
+      src={"data: image/jpg; base64,"+ this.state.captcha} 
       alt="captcha"/>)
     return (
       <div className="log">

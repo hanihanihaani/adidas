@@ -29,10 +29,9 @@ export const signupSubmit = (form) => {
     signup(form).then((resJson) => {
       if (resJson.OK) {
         dispatch(signupSuccess(resJson.user));
-        return dispatch(navUsername(resJson.user.username));
-       // message.success('登录成功')
-        //dispatch(navUsername(resJson.user.username));
-        //return history.push('/')
+       message.success('登录成功')
+        dispatch(navUsername(resJson.user.username));
+        return history.push('/')
       } else {
         message.error(resJson.message);
         return dispatch(signupError(resJson.message));

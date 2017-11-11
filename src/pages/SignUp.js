@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Input, Select, Row, Col, Checkbox, Button } from 'antd';
 import "../css/signup.css";
 import PropTypes from 'prop-types';
+import {captcha} from '../service/api';
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -12,10 +13,11 @@ class RegistrationForm extends React.Component {
     isFetching:PropTypes.bool.isRequired,
     error:PropTypes.bool,
   }
-  
+
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
+    captcha:""
   };
   handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +28,17 @@ class RegistrationForm extends React.Component {
       }
    })     
   }
-
+  getCaptcha() {
+    captcha().then((data) => {
+    console.log("cap：",data);
+     this.setState({
+        captcha:data.captcha
+      })
+    })
+  }
+  componentDidMount() {
+    this.getCaptcha();
+  }
   handleConfirmBlur = (e) => {
     const value = e.target.value;
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
@@ -59,7 +71,10 @@ class RegistrationForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-
+    const capImg = (<img style={{height:28,cursor:"pointer"}}
+      onClick={()=>this.getCaptcha()}
+      src={"data: image/jpg; base64,"+ this.state.captcha} 
+      alt="captcha"/>)
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -161,22 +176,22 @@ class RegistrationForm extends React.Component {
             )}
           </FormItem>
           <FormItem
-            {...formItemLayout}
-            label="验证码"
-            extra="We must make sure that your are a human."
-          >
-            <Row gutter={8}>
-              <Col span={12}>
-                {getFieldDecorator('captcha', {
-                  rules: [{ required: true, message: 'Please input the captcha you got!' }],
-                })(
-                  <Input size="large" />
-                )}
-              </Col>
-              <Col span={12}>
-                <Button size="large">Get captcha</Button>
-              </Col>
-            </Row>
+          {...formItemLayout}
+          label="Captcha"
+          extra="We must make sure that your are a human."
+        >
+          <Row gutter={8}>
+            <Col span={12}>
+              {getFieldDecorator('captcha', {
+                rules: [{ required: true, message: 'Please input the captcha you got!' }],
+              })(
+                <Input size="large" />
+              )}
+            </Col>
+            <Col span={12}>
+              <Button size="large" className="captcha">{capImg}</Button>
+            </Col>
+          </Row>
           </FormItem>
           <FormItem {...tailFormItemLayout} style={{ marginBottom: 8 }}>
             {getFieldDecorator('agreement', {

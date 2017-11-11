@@ -20,3 +20,6 @@
   background-color: blue;
   border-color: blue;
 }
+.log .ant-input-group-addon {
+  padding: 0;
+}

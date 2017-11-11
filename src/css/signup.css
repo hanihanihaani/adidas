@@ -9,3 +9,6 @@
   background-color: blue;
   border-color: blue;
 }
+.sign .captcha {
+  padding: 0;
+}
