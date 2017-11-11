@@ -8,8 +8,6 @@ const signup = (state=defaultState,action) => {
   switch (action.type) {
     case SIGNUP_START:
       return {isFetching:true}
-    case SIGNUP_SUCCESS:
-      return {isFetching:false,user:action.payload}
     case SIGNUP_ERROR:
       return {isFetching:false,error:true}
     default:

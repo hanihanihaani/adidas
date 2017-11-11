@@ -13,10 +13,6 @@ export const signupStart = () => ({
   type:SIGNUP_START
 })
 
-export const signupSuccess = (resJson) => ({
-  type:SIGNUP_SUCCESS,
-  payload:resJson,
-})
 
 export const signupError = (message) => ({
   type:SIGNUP_ERROR,
@@ -28,7 +24,6 @@ export const signupSubmit = (form) => {
     dispatch(signupStart());
     signup(form).then((resJson) => {
       if (resJson.OK) {
-        dispatch(signupSuccess(resJson.user));
        message.success('登录成功')
         dispatch(navUsername(resJson.user.username));
         return history.push('/')
