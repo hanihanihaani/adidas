@@ -115,7 +115,9 @@ class RegistrationForm extends React.Component {
             hasFeedback
           >
             {getFieldDecorator('username', {
-              rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+              rules: [{ required: true, message: '用户名不能为空', whitespace: true },
+                {pattern:/^[a-zA-Z][a-zA-Z0-9_-]{3,19}$/,message:"用户名必须是字母开头，包含数字，字母，的4-20位字符"}
+              ],
             })(
               <Input />
             )}
@@ -143,7 +145,12 @@ class RegistrationForm extends React.Component {
             {getFieldDecorator('password', {
               rules: [{
                 required: true, message: 'Please input your password!',
-              }, {
+              }, 
+              {
+                pattern:/((?=.*[\d])(?=.*[^\d])).{8,}|((?=.*[^A-Za-z])(?=.*[a-zA-Z])).{8,}/,
+                message:"密码必须符合复杂性要求"
+              },
+              {
                 validator: this.checkConfirm,
               }],
             })(

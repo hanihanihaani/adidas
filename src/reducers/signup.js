@@ -1,4 +1,4 @@
-import { SIGNUP_START, SIGNUP_ERROR, SIGNUP_SUCCESS } from '../actions/signup';
+import { SIGNUP_START, SIGNUP_ERROR } from '../actions/signup';
 
 const defaultState = {
   isFetching:false,

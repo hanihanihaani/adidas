@@ -24,3 +24,8 @@
   top: 19px;
   right: 40px;
 }
+.nav .logo >img {
+  width: 70px;
+  float: left;
+  margin-top: 6px;
+}

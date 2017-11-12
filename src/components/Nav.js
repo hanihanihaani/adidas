@@ -26,11 +26,12 @@ class Nav extends Component {
         </Menu.Item>
       </Menu>
     );
+    const img = {img:'imgs/logo.png'}
     return (
       <div className='nav'>
           <Layout>
             <Header>
-             <div className='logo'/>
+             <div className='logo'><img src={img.img} alt='图标'/></div>
               <Menu
                 theme="dark"
                 mode="horizontal"
