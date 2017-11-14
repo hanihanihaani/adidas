@@ -22,6 +22,9 @@ class Nav extends Component {
           <a target="_self" rel="noopener noreferrer" href="/user">用户中心</a>
         </Menu.Item>
         <Menu.Item>
+          <a target="_self" rel="noopener noreferrer" href="/manage">管理中心</a>
+        </Menu.Item>
+        <Menu.Item>
           <a onClick={this.handleLogout.bind(this)}>退出</a>
         </Menu.Item>
       </Menu>
