@@ -26,9 +26,15 @@ class UploadImg extends Component {
 
   handleChange(event) {
     // console.log("event",event)
-    // console.log("fileList",event.fileList)
+    console.log("fileList",event.fileList)
+   
+    //获取上传图片时的信息，里面包含了需要的图片的路径信息
     this.setState({ fileList:event.fileList })
+
+    //对fileList遍历，获取里面的response（即图片的路径）的信息
     const imgList = event.fileList.map((file) => (file.response))
+   
+    //将其放入到静态属性getImgList里，供父组件调用
     this.props.getImgList(imgList); 
   }
 

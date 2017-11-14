@@ -1,5 +1,35 @@
+import MyFetch from "./MyFetch";
 export const SERVER = 'http://192.168.1.210:3000';
 
+
+const apiConfig = {
+  login:["/login","POST","json"],
+  logout:["/logout"],
+  signup:["/signup","POST","json"],
+  captcha:["/captcha"],
+  addCat:["/manage/category","POST","json"],
+  modifyCat:["/manage/category","PUT","json"],
+  delCat:["/manage/category","DELETE","json"],
+  getCats:["/manage/category","GET","json"],
+  addProduct:["/manage/product","POST","json"]
+}
+
+const takeConfigToFunc = (config) => {
+  const api = {};
+  for (let key in config) {
+    const value = config[key];
+    if (value.length === 3 && value[2] !== "none") {
+      api[key] = (payload) => (MyFetch(...value,payload));
+    } else {
+      api[key] = () => (MyFetch(...value));
+    }
+  }
+  return api;
+}
+
+export default takeConfigToFunc(apiConfig);
+
+/*
 export const login = (form) => {
   return fetch(SERVER+'/login',{
     credentials:'include',
@@ -76,3 +106,5 @@ export const addProduct = (form) => {
     return res.json()
   })
 }
+*/
+

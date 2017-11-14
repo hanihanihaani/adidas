@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import "../css/login.css";
 import PropTypes from 'prop-types';
-import {captcha} from '../service/api';
+import api from '../service/api';
 const FormItem = Form.Item;
 
 class NormalLoginForm extends React.Component {
@@ -26,7 +26,7 @@ class NormalLoginForm extends React.Component {
     })
   }
   getCaptcha() {
-    captcha().then((data) => {
+    api.captcha().then((data) => {
     console.log("cap：",data);
      this.setState({
         captcha:data.captcha

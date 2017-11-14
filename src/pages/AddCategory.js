@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Form, Input, Button,Transfer, Select, message } from 'antd';
-import { getCats, addCat } from '../service/api';
+import api from '../service/api';
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -17,7 +17,7 @@ class NormalCategory extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        addCat(values).then((resJson) => {
+        api.addCat(values).then((resJson) => {
           if (resJson.OK) {
             message.success("分类添加成功")
           } else {
@@ -33,11 +33,14 @@ class NormalCategory extends Component {
   handleChange = (targetKeys) => {
     this.setState({ targetKeys });
   }
+  //向后台发送请求，获取所有的二级分类，并将其添加到穿梭框中，
   getAllCat2() {
-    getCats(2).then((resJson) => {
-      this.setState({
-        allCats:resJson.map((cat) => ({key:cat.name,name:cat.name}))
-      })
+    api.getCats(2).then((resJson) => {
+      if (resJson.OK) {
+       this.setState({
+              allCats:resJson.docs.map((cat) => ({key:cat.name,name:cat.name}))
+          })
+      }
     })
   }
   componentWillMount() {

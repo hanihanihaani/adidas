@@ -1,4 +1,4 @@
-import {login} from '../service/api';
+import api from '../service/api';
 import {navUsername} from './nav';
 import {message} from 'antd';
 import history from '../service/history';
@@ -26,7 +26,7 @@ export const loginError = (err) => ({
 export const loginThunk = (form) => {
   return (dispatch,getState) => {
     dispatch(loginStart());
-    login(form).then((resJson) => {
+   api.login(form).then((resJson) => {
       if (resJson.OK) {
         message.success('登录成功')
         dispatch(navUsername(resJson.user.username))

@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Select, Row, Col, Checkbox, Button } from 'antd';
 import "../css/signup.css";
 import PropTypes from 'prop-types';
-import {captcha} from '../service/api';
+import api from '../service/api';
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -29,7 +29,7 @@ class RegistrationForm extends React.Component {
    })     
   }
   getCaptcha() {
-    captcha().then((data) => {
+    api.captcha().then((data) => {
     console.log("cap：",data);
      this.setState({
         captcha:data.captcha
