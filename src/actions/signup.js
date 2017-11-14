@@ -1,4 +1,4 @@
-import {signup} from '../service/api';
+import api from '../service/api';
 import {navUsername} from './nav';
 import {message} from 'antd';
 import history from '../service/history';
@@ -22,7 +22,7 @@ export const signupError = (message) => ({
 export const signupSubmit = (form) => {
   return (dispatch,getState) => {
     dispatch(signupStart());
-    signup(form).then((resJson) => {
+    api.signup(form).then((resJson) => {
       if (resJson.OK) {
        message.success('登录成功')
         dispatch(navUsername(resJson.user.username));
