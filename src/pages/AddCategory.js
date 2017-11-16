@@ -28,7 +28,7 @@ class NormalCategory extends Component {
     })
   }
   filterOption = (inputValue, option) => {
-    return option.description.indexOf(inputValue) > -1;
+    return option.name.indexOf(inputValue) > -1;
   }
   handleChange = (targetKeys) => {
     this.setState({ targetKeys });

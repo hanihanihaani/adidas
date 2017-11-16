@@ -7,11 +7,19 @@ const apiConfig = {
   logout:["/logout"],
   signup:["/signup","POST","json"],
   captcha:["/captcha"],
+
   addCat:["/manage/category","POST","json"],
   modifyCat:["/manage/category","PUT","json"],
   delCat:["/manage/category","DELETE","json"],
   getCats:["/manage/category","GET","json"],
-  addProduct:["/manage/product","POST","json"]
+
+  addProduct:["/manage/product","POST","json"],
+  getPro:["/manage/product","GET","query"],
+  getProduct:["/manage/product","GET","path"],
+
+  addCart:["/shoppingcart","POST","json"],
+  getCart:["/shoppingcart"],
+  delCart:["/shoppingcart","DELETE","path"]
 }
 
 const takeConfigToFunc = (config) => {

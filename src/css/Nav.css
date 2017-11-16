@@ -32,3 +32,8 @@
 .nav .ant-layout-header {
   height: 70px;
 }
+.nav .right .cart {
+  position: absolute;
+  top: 18px;
+  right: 150px;
+}

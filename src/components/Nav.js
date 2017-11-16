@@ -25,6 +25,9 @@ class Nav extends Component {
           <a target="_self" rel="noopener noreferrer" href="/manage">管理中心</a>
         </Menu.Item>
         <Menu.Item>
+          <a target="_self" rel="noopener noreferrer" href="/">首页</a>
+        </Menu.Item>
+        <Menu.Item>
           <a onClick={this.handleLogout.bind(this)}>退出</a>
         </Menu.Item>
       </Menu>
@@ -80,11 +83,13 @@ class Nav extends Component {
               </Menu>
               {
                  this.props.username ?
-                 <Dropdown overlay={menu}>
-                  <Button icon="user" className="user-btn">
-                     {this.props.username}<Icon type="down" />
-                  </Button>
-                </Dropdown>
+                 <div className="right">
+                   <Dropdown overlay={menu}>
+                    <Button icon="user" className="user-btn">
+                       {this.props.username}<Icon type="down" />
+                    </Button>
+                  </Dropdown>
+                </div>
                 :
                 <div>
                   <Link to="/login">
