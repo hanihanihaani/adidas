@@ -16,6 +16,7 @@ const apiConfig = {
   addProduct:["/manage/product","POST","json"],
   getPro:["/manage/product","GET","query"],
   getProduct:["/manage/product","GET","path"],
+  delProduct:["/manage/product","DELETE","path"],
 
   addCart:["/shoppingcart","POST","json"],
   getCart:["/shoppingcart"],

@@ -9,7 +9,7 @@ class ProductCard extends Component {
   }
   render() {
     const { description, name, price, _id, images } = this.props.product;
-    console.log("images",images);
+    // console.log("images",images);
     return(
       <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
         <Link to={"/product/"+_id}>

@@ -3,6 +3,7 @@ import {Row, Col, Spin, message, Button} from 'antd';
 import ProductCard from '../components/ProductCard';
 import api from '../service/api';
 import AddButton from '../components/AddButton';
+import ShoppingCart from '../components/ShoppingCart';
 
 class Product extends Component {
   state = {
@@ -25,7 +26,7 @@ class Product extends Component {
     })
   }
   handleCount(value) {
-    console.log("count",value);
+    console.log("count value",value);
     this.setState({
       count:value
     })
@@ -57,6 +58,8 @@ class Product extends Component {
               defaultValue={this.state.count}
             />
             <Button onClick={this.handleAddCart.bind(this)}>加入购物车</Button>
+            <hr/>
+            <ShoppingCart/>
           </Col>
         </Row>
       </div>

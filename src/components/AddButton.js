@@ -22,6 +22,7 @@ class AddButton extends Component {
     this.props.onChange(value);
   }
   handleChange(e) {
+    console.log("e.target",e.target);
     const value = parseInt(e.target.value,10);
     this.setState({value})
     this.props.onChange(value);
