@@ -1,28 +1,40 @@
 import React, {Component} from 'react';
-import { Button, Icon, message, Spin, Badge } from 'antd';
+import { Button, Icon, Spin, Badge } from 'antd';
 import CartItem from './CartItem';
-import api from '../service/api';
 import "../css/shoppingcart.css";
+import PropTypes from 'prop-types';
 
 
 class ShoppingCart extends Component {
+  static propTypes = {
+    isFetching:PropTypes.bool.isRequired,
+    cartList:PropTypes.array.isRequired,
+    count:PropTypes.number.isRequired,
+    valid:PropTypes.bool.isRequired,
+    getCart:PropTypes.func.isRequired,
+    delCart:PropTypes.func.isRequired
+  }
   state = {
     showList:false,
-    cartList:[],
-    isFetching:false,
+    // cartList:[],
+    // isFetching:false,
   }
   handleMouseOver() {
     this.setState({
       showList:true,
-      isFetching:true
+      // isFetching:true
     })
-    this.getCart();
+    // this.getCart();
+    if (this.props.valid) {
+      this.props.getCart()
+    }
   }
   handleMouseOut() {
     this.setState({
       showList:false
     })
   }
+  /*
   getCart() {
     api.getCart().then((res) => {
       if (res.OK) {
@@ -44,9 +56,11 @@ class ShoppingCart extends Component {
       }
     })
   }
+  */
   render() {
-    const {cartList,isFetching,showList} = this.state;
-    let count=0; 
+    const {cartList,isFetching,delCart,count} = this.props;
+    const {showList} = this.state;
+    let countn=0; 
     let sum=0;
     return(
       <div className="shoppingcart"
@@ -56,7 +70,7 @@ class ShoppingCart extends Component {
           className="btn-cart"
           onMouseOver={this.handleMouseOver.bind(this)}
         >
-        <Badge count={cartList.length} showZero>
+        <Badge count={count} showZero>
         购物车
          <Icon type={"shopping-cart"}/>
         </Badge>
@@ -72,21 +86,21 @@ class ShoppingCart extends Component {
               {
                 cartList.length > 0 ?
                 cartList.map((cart,i) => {
-                  count += cart.num;
+                  countn += cart.num;
                   sum += cart.num * cart.product.price;
                   return (
                     <CartItem
                       product={cart.product}
                       num={cart.num}
                       key={i}
-                      delCart={() => this.delCart(cart._id)}
+                      delCart={() => delCart(cart._id)}
                     />
                   )
                 })
                 :<p>购物车空空如也</p>
               }
               <div className="cartFooter">
-                <p>共{count}件商品，共计￥{sum.toFixed(2)}</p>
+                <p>共{countn}件商品，共计￥{sum.toFixed(2)}</p>
                 <Button>去购物车</Button>
               </div>
             </div>

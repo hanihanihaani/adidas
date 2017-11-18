@@ -5,7 +5,7 @@ import ConNav from './containers/ConNav';
 import User from './pages/User';
 import Home from './pages/Home';
 import Manage from './pages/Manage';
-import Product from './pages/Product';
+import ConProduct from './containers/ConProduct';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import 'whatwg-fetch';
 import "./App.css";
@@ -20,7 +20,7 @@ class App extends Component {
                <Route path="/login" component={ConLogin}/>            
                <Route path="/signup" component={ConSignup}/>            
                <Route path="/user" component={User}/>            
-               <Route path="/product/:id" component={Product}/>            
+               <Route path="/product/:id" component={ConProduct}/>            
                <Route path="/manage" component={Manage}/>            
                <Route path="/" component={Home}/>            
             </Switch>

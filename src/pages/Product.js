@@ -3,9 +3,13 @@ import {Row, Col, Spin, message, Button} from 'antd';
 import ProductCard from '../components/ProductCard';
 import api from '../service/api';
 import AddButton from '../components/AddButton';
-import ShoppingCart from '../components/ShoppingCart';
+import ConCart from '../containers/ConCart';
+import PropTypes from 'prop-types';
 
 class Product extends Component {
+  static propTypes = {
+    addCart:PropTypes.func.isRequired 
+  }
   state = {
     product:{},
     count:1
@@ -38,6 +42,9 @@ class Product extends Component {
     }]
     console.log("addCart",postData);
     api.addCart(postData).then((res) => {
+      if (res.OK) {
+        this.props.addCart(res.count)
+      }
       console.log("res",res);
     })
   }
@@ -59,7 +66,7 @@ class Product extends Component {
             />
             <Button onClick={this.handleAddCart.bind(this)}>加入购物车</Button>
             <hr/>
-            <ShoppingCart/>
+            <ConCart/>
           </Col>
         </Row>
       </div>
