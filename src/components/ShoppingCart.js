@@ -53,6 +53,7 @@ class ShoppingCart extends Component {
             onMouseLeave={this.handleMouseOut.bind(this)}
       >
         <Button
+          className="btn-cart"
           onMouseOver={this.handleMouseOver.bind(this)}
         >
         <Badge count={cartList.length} showZero>

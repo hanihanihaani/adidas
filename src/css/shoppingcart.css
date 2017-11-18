@@ -1,10 +1,13 @@
-.shoppingcart .cart .cartList {
+.shoppingcart {
+  position: relative;
+}
+.shoppingcart .cart {
   width: 300px;
   border: 1px solid #000;
-  position: relative;
-  top: 0px;
-  left: 193px;
-  z-index: 900;
+  position: absolute;
+  top: 28px;
+  left: -220px;
+  background-color: #fff;
 }
 .shoppingcart .cart .cartList .cartItem {
   width: 100%;
@@ -47,15 +50,17 @@
   outline: none;
   background-color: #fff;
 }
-.shoppingcart > button {
+.shoppingcart .btn-cart {
+  border-radius: 0;
+}
+.shoppingcart:hover > button {
+  border-color: #000;
+  border-bottom: none;
   z-index: 999;
 }
-.shoppingcart > button:hover {
-  border-bottom: none;
-  border-color: #000;
-}
-.shoppingcart > button:hover .shoppingcart .cart .cartList {
-  top: -3px;
+.shoppingcart:hover .cart {
+  z-index: 998;
+  top: 27px;
 }
 .shoppingcart .cartFooter {
   width: 300px;

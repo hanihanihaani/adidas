@@ -15,7 +15,7 @@ class CartItem extends Component {
         <img src={product.images[0]} alt="图片"/>
         <h3>{product.name}</h3>
         <h4>{product.description}</h4>
-        <p>￥:{product.price}x {num}</p>
+        <p>￥:{product.price.toFixed(2)}x {num}</p>
         <button onClick={delCart}>删除</button>
       </div>
     )

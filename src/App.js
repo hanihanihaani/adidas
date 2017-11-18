@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import ConSignup from './containers/ConSignup';
 import ConLogin from './containers/ConLogin';
 import ConNav from './containers/ConNav';
@@ -9,6 +8,7 @@ import Manage from './pages/Manage';
 import Product from './pages/Product';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import 'whatwg-fetch';
+import "./App.css";
 
 class App extends Component {
   render() {
