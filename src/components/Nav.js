@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import "../css/Nav.css";
 import { Layout, Menu, Button,Dropdown, Icon } from 'antd';
 import { Link } from 'react-router-dom';
+import ConCart from '../containers/ConCart';
 const { Header } = Layout;
 const SubMenu = Menu.SubMenu;
 
@@ -23,6 +24,9 @@ class Nav extends Component {
         </Menu.Item>
         <Menu.Item>
           <a target="_self" rel="noopener noreferrer" href="/manage">管理中心</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a target="_self" rel="noopener noreferrer" href="/order">订单中心</a>
         </Menu.Item>
         <Menu.Item>
           <a target="_self" rel="noopener noreferrer" href="/">首页</a>
@@ -89,6 +93,9 @@ class Nav extends Component {
                        {this.props.username}<Icon type="down" />
                     </Button>
                   </Dropdown>
+                  <div style={{"position":"absolute","top":"0","right":"174px"}}>
+                    <ConCart/>
+                  </div>
                 </div>
                 :
                 <div>

@@ -1,0 +1,10 @@
+.contact-a {
+  width: 90%;
+  margin: auto;
+  position: relative;
+}
+.contact-a > button {
+  position: absolute;
+  top: 4px;
+  right: 20px;
+}

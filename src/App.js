@@ -5,6 +5,7 @@ import ConNav from './containers/ConNav';
 import User from './pages/User';
 import Home from './pages/Home';
 import Manage from './pages/Manage';
+import Order from './pages/Order';
 import ConProduct from './containers/ConProduct';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import 'whatwg-fetch';
@@ -22,6 +23,7 @@ class App extends Component {
                <Route path="/user" component={User}/>            
                <Route path="/product/:id" component={ConProduct}/>            
                <Route path="/manage" component={Manage}/>            
+               <Route path="/order" component={Order}/>            
                <Route path="/" component={Home}/>            
             </Switch>
         </div>

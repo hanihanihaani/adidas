@@ -15,7 +15,6 @@ const imgs = [
     img:"imgs/3.jpg"
   }
 ] 
-
 class Home extends Component {
   state = {
     allPros:[]
@@ -23,9 +22,7 @@ class Home extends Component {
   getAllPros() {
     api.getPro().then((resJson) => {
       if (resJson.OK) {
-        this.setState({
-          allPros:resJson.docs
-        })
+        this.setState({allPros:resJson.docs})
       }
     })
   }
@@ -54,7 +51,7 @@ class Home extends Component {
                     <ProductCard key={i} product={product}/>
                   </Col>
                 ))
-            }
+              }
           </Row>
         </div>
       </div>
