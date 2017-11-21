@@ -1,5 +1,5 @@
 .contact-a {
-  width: 90%;
+  width: 1200px;
   margin: auto;
   position: relative;
 }
@@ -7,4 +7,7 @@
   position: absolute;
   top: 4px;
   right: 20px;
+}
+.contact-a .ant-radio-group {
+  margin-top: 20px;
 }

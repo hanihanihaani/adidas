@@ -1,0 +1,58 @@
+
+.radio-btn {
+  position: relative;
+  width: 1200px;
+  margin-top: 10px;
+}
+.radio-btn div {
+  display: inline-block;
+}
+.radio-btn .ant-radio-button-wrapper {
+  width: 150px;
+  text-align: center;
+}
+.radio-btn .duigou {
+  position: absolute;
+  top: 13px;
+  left: 141px;
+  z-index: 999;
+  color: #fff;
+  display: none;
+}
+.radio-btn .trangle {
+  position: absolute;
+  top: 13px;
+  left: 134px;
+  width: 0;
+  border-top: 15px solid #fff;
+  border-right: 15px solid #000;
+  z-index: 998;
+  display: none;
+}
+.radio-btn:hover {
+  background-color: #fff3f3;
+}
+.radio-btn:hover .op {
+  display: block;
+}
+.radio-btn .op {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  display: none;
+}
+.radio-btn .op > button{
+  margin-left: 10px;
+}
+.radio-btn .info {
+  margin-left: 10px;
+}
+.radio-btn .info .contact {
+  width: 100px
+}
+.radio-btn .info .address {
+  width: 400px;
+}
+.radio-btn .info .phone {
+  width: 100px;
+}

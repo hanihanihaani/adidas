@@ -5,6 +5,7 @@ import UploadImg from '../components/UploadImg';
 import AddProduct from './AddProduct';
 import ModifyCategory from './ModifyCategory';
 import AddCategory from './AddCategory';
+import DelProduct from './DelProduct';
 const MenuItem = Menu.Item
 
 
@@ -21,6 +22,9 @@ class Manage extends Component {
               </MenuItem>
               <MenuItem>
                 <Link to="/manage/addproduct">商品管理</Link>
+              </MenuItem>
+               <MenuItem>
+                <Link to="/manage/delproduct">删除商品</Link>
               </MenuItem>
               <MenuItem>
                 <Link to="/manage/upload">上传图片</Link>
@@ -42,6 +46,7 @@ class Manage extends Component {
               <Route path="/manage/addproduct" component={AddProduct}/>
               <Route path="/manage/addcategory" component={AddCategory}/>
               <Route path="/manage/modifycategory" component={ModifyCategory}/>
+              <Route path="/manage/delproduct" component={DelProduct}/>
             </Switch>
           </Col>
         </Row>

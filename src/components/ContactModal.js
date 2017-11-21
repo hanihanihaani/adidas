@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button,Modal,Form,Switch,Input} from 'antd';
+import {Modal,Form,Switch,Input} from 'antd';
 import PropTypes from 'prop-types';
 const FormItem = Form.Item;
 
@@ -18,6 +18,9 @@ class ContactModal extends Component {
     this.props.form.validateFields((err, values) => {
        if (!err) {
         console.log('Received values of form: ', values);
+        if (this.props.defaultValues._id) {
+          values.id = this.props.defaultValues._id;
+        }
         this.props.handleOk(values);
         console.log("values",values);
        }
