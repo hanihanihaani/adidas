@@ -8,6 +8,7 @@ const RadioGroup = Radio.Group;
 
 class Contact extends Component {
   state = {
+    moreBtn:false,
     showModal:false,
     action:"new",
     defaultValues:{},
@@ -73,7 +74,7 @@ class Contact extends Component {
       }
     })
   }  render() {
-    const {showModal,action,defaultValues,allContacts} = this.state
+    const {showModal,action,defaultValues,allContacts,moreBtn} = this.state
     console.log("allContacts",allContacts);
     let okModal; let title;
     if (action === "new") {
@@ -90,10 +91,13 @@ class Contact extends Component {
           onClick={() => this.setState({showModal:true,action:"new",defaultValues:{}})}
         >新增收货人地址</Button>
         {
+          //没有收货人地址时，显示新增，有时，先将所有的收货人地址遍历出来，引用contactItem组件，将相关的信息传过去
           allContacts.length === 0 ? 
           <h3>没有收货人地址，请新增</h3>
           :
-          <RadioGroup>
+          <RadioGroup 
+          className={moreBtn ? "more" : ""}
+          >
           {
             allContacts.map((contact,i) => (
                 <ContactItem
@@ -107,13 +111,24 @@ class Contact extends Component {
           }
           </RadioGroup>
         }
-        <ContactModal
+        <div className="zhezhao">
+          <Button onClick={() => this.setState({moreBtn:!this.state.moreBtn})}>
+            {moreBtn ? "收起" : "更多"}地址
+          </Button>
+        </div>
+        {
+          //用来控制新增联系人时清空表单的数据
+          showModal ? 
+          <ContactModal
           visible={showModal}
           title={title}
           handleOk={okModal}
           handleCancel={()=>this.cancelModal()}
           defaultValues={defaultValues}
         />
+        : null
+        }
+        
       </div>
     )
   }

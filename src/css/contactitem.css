@@ -7,27 +7,42 @@
 .radio-btn div {
   display: inline-block;
 }
+.radio-btn div.info {
+  position: relative;
+  top: -7px;
+}
+.radio-btn div.op {
+  position:absolute;
+  top: 3px;
+  right: 34px;
+}
 .radio-btn .ant-radio-button-wrapper {
   width: 150px;
   text-align: center;
+  margin-left: 2px;
+  overflow: hidden;
+  position: relative;
+  top: 3px;
 }
-.radio-btn .duigou {
+.radio-btn .ant-radio-button-wrapper .ant-radio-button-checked:after {
+  content: "";
+  width: 20px;
+  height: 20px;
   position: absolute;
-  top: 13px;
-  left: 141px;
-  z-index: 999;
-  color: #fff;
-  display: none;
-}
-.radio-btn .trangle {
-  position: absolute;
-  top: 13px;
-  left: 134px;
-  width: 0;
-  border-top: 15px solid #fff;
-  border-right: 15px solid #000;
+  top: 15px;
+  left: 140px;
   z-index: 998;
-  display: none;
+  background-color: #000;
+  transform: rotate(45deg);
+}
+.radio-btn .ant-radio-button-wrapper-checked:after {
+  content: "\2713";
+  font-size: 18px;
+  color: #fff;
+  position: absolute;
+  top: 4px;
+  left: 138px;
+  z-index: 999;
 }
 .radio-btn:hover {
   background-color: #fff3f3;

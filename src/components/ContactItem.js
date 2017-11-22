@@ -9,8 +9,6 @@ class ContactItem extends Component {
     const {delContact,updateContact,setDefault} = this.props;
     return(
       <div className="radio-btn">
-        <div className="trangle"></div>
-        <span className="duigou">&radic;</span>
         <RadioButton value="_id">
           {contact}
         </RadioButton>

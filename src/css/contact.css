@@ -2,12 +2,30 @@
   width: 1200px;
   margin: auto;
   position: relative;
+  border: 1px solid #000;
+  padding: 10px;
+  overflow: hidden;
 }
 .contact-a > button {
   position: absolute;
   top: 4px;
   right: 20px;
 }
+.contact-a .ant-radio-group.more {
+  max-height: 135px;
+  overflow: auto;
+}
 .contact-a .ant-radio-group {
   margin-top: 20px;
+  width: 100%;
+  max-height: 60px;
+  overflow: hidden;
+}
+.contact-a .zhezhao {
+  margin-top: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 999;
 }
