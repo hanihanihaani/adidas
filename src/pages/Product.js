@@ -48,6 +48,7 @@ class Product extends Component {
       console.log("res",res);
     })
   }
+ 
   render() {
     const {product} = this.state;
     if (!product.images) {

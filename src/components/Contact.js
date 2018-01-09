@@ -73,7 +73,12 @@ class Contact extends Component {
         message.error("收货人默认地址设置失败"+res.message)
       }
     })
-  }  render() {
+  }  
+  changeContact(e) {
+    const value = e.target.value
+    console.log("value",value)
+  }
+  render() {
     const {showModal,action,defaultValues,allContacts,moreBtn} = this.state
     console.log("allContacts",allContacts);
     let okModal; let title;
@@ -96,6 +101,8 @@ class Contact extends Component {
           <h3>没有收货人地址，请新增</h3>
           :
           <RadioGroup 
+          onChange={this.changeContact.bind(this)}
+          defaultValues={allContacts[0]._id}
           className={moreBtn ? "more" : ""}
           >
           {

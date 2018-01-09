@@ -13,9 +13,9 @@ class NormalLoginForm extends React.Component {
     error:PropTypes.bool,
     message:PropTypes.string
   }
-  state = {
-      captcha:"",
-  }
+  // state = {
+  //     captcha:"",
+  // }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -25,23 +25,23 @@ class NormalLoginForm extends React.Component {
       }
     })
   }
-  getCaptcha() {
-    api.captcha().then((data) => {
-    console.log("cap：",data);
-     this.setState({
-        captcha:data.captcha
-      })
-    })
-  }
-  componentDidMount() {
-    this.getCaptcha();
-  }
+  // getCaptcha() {
+  //   api.captcha().then((data) => {
+  //   console.log("cap：",data);
+  //    this.setState({
+  //       captcha:data.captcha
+  //     })
+  //   })
+  // }
+  // componentDidMount() {
+  //   this.getCaptcha();
+  // }
   render() {
     const { getFieldDecorator } = this.props.form;
-    const capImg = (<img style={{height:28,cursor:"pointer"}}
-      onClick={()=>this.getCaptcha()}
-      src={"data: image/jpg; base64,"+ this.state.captcha} 
-      alt="captcha"/>)
+    // const capImg = (<img style={{height:28,cursor:"pointer"}}
+    //   onClick={()=>this.getCaptcha()}
+    //   src={"data: image/jpg; base64,"+ this.state.captcha} 
+    //   alt="captcha"/>)
     return (
       <div className="log">
         <Form onSubmit={this.handleSubmit} className="login-form">
@@ -58,17 +58,6 @@ class NormalLoginForm extends React.Component {
               rules: [{ required: true, message: 'Please input your Password!' }],
             })(
               <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Password" />
-            )}
-          </FormItem>
-           <FormItem>
-            {getFieldDecorator('captcha', {
-              valuePropName:'checked',
-              initialValue:true,
-            })(
-              <Input 
-                 addonBefore={<label>验证码</label>}
-                 addonAfter={capImg}
-               placeholder="请输入验证码" />
             )}
           </FormItem>
           <FormItem>

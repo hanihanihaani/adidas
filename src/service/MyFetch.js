@@ -1,4 +1,4 @@
-const SERVER = "http://192.168.1.210:3000";
+const SERVER = "http://localhost:3000";
 
 const MyFetch = function(path,method="GET",ctype="json",payload="") {
   let url;

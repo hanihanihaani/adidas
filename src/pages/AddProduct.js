@@ -203,7 +203,7 @@ class NormalProductForm extends React.Component {
             {getFieldDecorator('images', {})(
               <UploadImg
               max={8}
-              action="http://192.168.1.210:3000/upload"
+              action="http://localhost:3000/upload"
               getImgList={this.getImgList.bind(this)}
               />
             )}

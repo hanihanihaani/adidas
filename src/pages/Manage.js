@@ -40,7 +40,7 @@ class Manage extends Component {
               <Route path="/manage/upload" render={() => (
                   <UploadImg max={3}
                   getImgList={() => {}}
-                  action="http://192.168.1.210:3000/upload"
+                  action="http://localhost:3000/upload"
                   />
                 )}/>
               <Route path="/manage/addproduct" component={AddProduct}/>
