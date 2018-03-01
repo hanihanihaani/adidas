@@ -1,5 +1,4 @@
 
 
-[首页演示图](https://hanihanihaani.github.io/adidas/tree/master/src/imgs/index.gif)
-
+[首页演示图](https://github.com/hanihanihaani/adidas/blob/master/src/imgs/index.gif)
 
